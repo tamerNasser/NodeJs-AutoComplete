@@ -1,0 +1,26 @@
+{
+  "name": "NodeJs-AutoComplete",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node tests/test.js | tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karam1ashqar/NodeJs-AutoComplete.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karam1ashqar/NodeJs-AutoComplete/issues"
+  },
+  "homepage": "https://github.com/karam1ashqar/NodeJs-AutoComplete#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
