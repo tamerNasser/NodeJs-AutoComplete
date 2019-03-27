@@ -33,10 +33,15 @@ const handleHome = (response) => {
 
 const handleAutoComplete = (res, url, data) => {
   let search = querystring.parse(url.substring(url.indexOf('?') + 1)).input;
+  // let arrsearch = search.split(' ');
+  // console.log(arrsearch[arrsearch.length-1]);
   data = JSON.parse(data)
   // console.log(data);
   // console.log(url);
-  let results = Object.keys(data)
+  let searchobj = search[0].toUpperCase();
+console.log(searchobj);
+  // console.log(search);
+  let results = Object.keys(data[searchobj])
     .reduce((acc, currentObj) => {
       if (acc === undefined || acc.length < 6) {
         if (search === currentObj.substr(0, search.length)) {
@@ -47,7 +52,8 @@ const handleAutoComplete = (res, url, data) => {
         return acc;
       }
     }, [])
-  // console.log(results);
+
+  console.log(results);
   res.writeHead(200, {
     'Content-Type': 'application/json'
   });
