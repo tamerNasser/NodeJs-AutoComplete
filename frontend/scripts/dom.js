@@ -17,9 +17,9 @@ const autocomplete = inp => {
       itemsDiv = document.createElement("DIV");
       itemsDiv.setAttribute("id", this.id + "autocomplete-list");
       itemsDiv.setAttribute("class", "autocomplete-items");
-      this.parentNode.appendChild(a);
+      this.parentNode.appendChild(itemsDiv);
 
-      let newVal = val.split(" ");
+      let newVal = inputVal.split(" ");
 
       if (newVal[newVal.length - 1] === undefined) {
         inputVal = newVal[0];
