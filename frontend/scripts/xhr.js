@@ -5,8 +5,13 @@ let connectToBase = function(value) {
   // console.log(value);
 
   let lastWord = value.split( ' ' );
+  let lastWordF = "";
+ if( lastWord[lastWord.length - 1] === null )
+ lastWordF = lastWord[0];
 
-  fetch('/search?input=' + lastWord[lastWord.length - 1])
+ else lastWordF = lastWord[lastWord.length - 1]
+
+  fetch('/search?input=' + lastWordF)
     .then(
       function(response) {
         if (response.status !== 200) {
