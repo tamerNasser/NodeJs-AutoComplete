@@ -1,110 +1,116 @@
-
-
-let autocomplete = (inp) => {
-
+let autocomplete = inp => {
   var currentFocus;
   inp.addEventListener("input", function(e) {
-      var a, b, i, val = this.value;
-      closeAllLists();
-      if (!val) return false;
+    var a,
+      b,
+      i,
+      val = this.value;
+    closeAllLists();
+    if (!val) return false;
 
-      connectToBase( this.value ,()=>{
-        countries = changeValue();
-        console.log(countries);
-        currentFocus = -1;
+    connectToBase(this.value, () => {
+      countries = changeValue();
+      console.log(countries);
+      currentFocus = -1;
 
-        a = document.createElement("DIV");
-        a.setAttribute("id", this.id + "autocomplete-list");
-        a.setAttribute("class", "autocomplete-items");
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
 
-        this.parentNode.appendChild(a);
+      this.parentNode.appendChild(a);
 
-        let newVal = val.split(' ');
+      let newVal = val.split(" ");
 
-        if(newVal[newVal.length-1] === undefined){
-          val = newVal[0];
-        }else {
-          val=newVal[newVal.length-1];
-        }
+      if (newVal[newVal.length - 1] === undefined) {
+        val = newVal[0];
+      } else {
+        val = newVal[newVal.length - 1];
+      }
 
+      var existing = localStorage.getItem("History");
+      existing = existing ? existing.split(",") : [];
 
+      for (i = 0; i < countries.length; i++) {
+        if (
+          countries[i].substr(0, val.length).toUpperCase() == val.toUpperCase()
+        ) {
+          b = document.createElement("DIV");
 
+          b.innerHTML =
+            "<strong>" + countries[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += countries[i].substr(val.length);
 
+          b.innerHTML += "<input type='hidden' value='" + countries[i] + "'>";
 
+          if (existing != null) {
+            for (var x = 0; x < existing.length; x++) {
 
-        for (i = 0; i < countries.length; i++) {
+                console.log(b)
+                if( countries[i] === existing[x] )
+                b.style.color = "blue"
 
-
-
-          if (countries[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-
-            b = document.createElement("DIV");
-
-            b.innerHTML = "<strong>" + countries[i].substr(0, val.length) + "</strong>";
-            b.innerHTML += countries[i].substr(val.length);
-
-            b.innerHTML += "<input type='hidden' value='" + countries[i] + "'>";
-
-            b.addEventListener("click", function(e) {
-
-                inp.value = this.getElementsByTagName("input")[0].value;
-
-
-                closeAllLists();
-            });
-            a.appendChild(b);
+            }
           }
+
+          b.addEventListener("click", function(e) {
+            inp.value = this.getElementsByTagName("input")[0].value;
+
+            closeAllLists();
+          });
+          a.appendChild(b);
         }
-
-      });
-
+      }
+    });
   });
 
   inp.addEventListener("keydown", function(e) {
-      var x = document.getElementById(this.id + "autocomplete-list");
-      if (x) x = x.getElementsByTagName("div");
-      if (e.keyCode == 40) {
+    var x = document.getElementById(this.id + "autocomplete-list");
+    if (x) x = x.getElementsByTagName("div");
+    if (e.keyCode == 40) {
+      currentFocus++;
 
+      addActive(x);
+    } else if (e.keyCode == 38) {
+      currentFocus--;
 
-        currentFocus++;
+      addActive(x);
+    } else if (e.keyCode == 13) {
+      // Get the existing data
+      var existing = localStorage.getItem("History");
 
-        addActive(x);
-      } else if (e.keyCode == 38) {
+      // If no existing data, create an array
+      // Otherwise, convert the localStorage string to an array
+      existing = existing ? existing.split(",") : [];
 
+      // Add new data to localStorage Array
+      existing.push(this.value);
 
-        currentFocus--;
+      // Save back to localStorage
+      localStorage.setItem("History", existing.toString());
 
-        addActive(x);
-      } else if (e.keyCode == 13) {
-
-search( this.value )
-        e.preventDefault();
-        if (currentFocus > -1) {
-
-          if (x) x[currentFocus].click();
-        }
+      search(this.value);
+      e.preventDefault();
+      if (currentFocus > -1) {
+        if (x) x[currentFocus].click();
       }
+    }
   });
 
   function addActive(x) {
-
     if (!x) return false;
 
     removeActive(x);
     if (currentFocus >= x.length) currentFocus = 0;
-    if (currentFocus < 0) currentFocus = (x.length - 1);
+    if (currentFocus < 0) currentFocus = x.length - 1;
 
     x[currentFocus].classList.add("autocomplete-active");
   }
   function removeActive(x) {
-
     for (var i = 0; i < x.length; i++) {
       x[i].classList.remove("autocomplete-active");
     }
   }
   function closeAllLists(elmnt) {
-
-
     var x = document.getElementsByClassName("autocomplete-items");
     for (var i = 0; i < x.length; i++) {
       if (elmnt != x[i] && elmnt != inp) {
@@ -113,18 +119,17 @@ search( this.value )
     }
   }
 
-  document.addEventListener("click", function (e) {
-      closeAllLists(e.target);
+  document.addEventListener("click", function(e) {
+    closeAllLists(e.target);
   });
-}
+};
 
-function search(query){
-           if(query.slice(0, 7) == "http://"){
-               window.location.href = query
-           }
-           else{
-               window.location.href = "https://www.google.com/search?q=" + query
-           }
-       }
+function search(query) {
+  if (query.slice(0, 7) == "http://") {
+    window.location.href = query;
+  } else {
+    window.location.href = "https://www.google.com/search?q=" + query;
+  }
+}
 
 autocomplete(document.getElementById("myInput"));
