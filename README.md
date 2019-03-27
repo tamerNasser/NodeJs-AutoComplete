@@ -2,7 +2,7 @@
 
 #### Url
 
-[NodeJs AutoComplete Search](https://www.tamkarnodejs.herokuapp.com)
+[NodeJs AutoComplete Search](https://tamkarnodejs.herokuapp.com)
 
 #### What?
 
