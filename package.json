@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "node tests/test.js | tap-spec",
+    "test": "tape test/* | tap-spec",
     "connect": "nodemon backend/server.js",
     "start": "node backend/server.js"
   },
@@ -23,6 +23,11 @@
   },
   "homepage": "https://github.com/karam1ashqar/NodeJs-AutoComplete#readme",
   "devDependencies": {
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "nyc": "^13.3.0"
+  },
+  "dependencies": {
+    "tap-spec": "^5.0.0",
+    "tape": "^4.10.1"
   }
 }
