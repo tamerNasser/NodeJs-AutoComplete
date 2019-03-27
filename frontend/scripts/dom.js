@@ -20,10 +20,10 @@ let autocomplete = (inp) => {
 
      let newVal = val.split(' ');
 
-     if( newVal.trim() == "" )
+     if( newVal[val.length-1].trim() == "" )
           val = newVal[0];
 
-    else val = newVal[ val.length - 1 ]  
+    else val = newVal[ val.length - 1 ]
 
       for (i = 0; i < countries.length; i++) {
 
