@@ -4,7 +4,28 @@ body {
 }
 
 .page-title {
-  margin-top: 3%;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  padding: 20px;
+  width: fit-content;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+input[type="submit"] {
+  transition: all .4s ease;
+}
+
+input[type="submit"]:hover {
+  transform: scale(0.9);
+}
+
+input[type="text"] {
+  transition: all .7s ease;
+}
+
+input[type="text"]:focus {
+  width: 300px;
 }
 
 * { box-sizing: border-box; }
