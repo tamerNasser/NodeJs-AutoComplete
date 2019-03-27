@@ -35,17 +35,7 @@ const handleAutoComplete = (res, url, data) => {
   let search = querystring.parse(url.substring(url.indexOf('?') + 1)).input;
   data = JSON.parse(data)
   let searchobj = search[0].toUpperCase();
-  let results = Object.keys(data[searchobj])
-    .reduce((acc, currentObj) => {
-      if (acc === undefined || acc.length < 6) {
-        if (search === currentObj.substr(0, search.length)) {
-          return acc.concat(currentObj);
-        }
-        return acc;
-      }else {
-        return acc;
-      }
-    }, [])
+  let results = logic.getAutoCompleteWords(Object.keys(data[searchobj]),search);
   res.writeHead(200, {
     'Content-Type': 'application/json'
   });
