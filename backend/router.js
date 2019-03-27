@@ -9,6 +9,8 @@ const router = (request, response) => {
     handlers.handleAutoComplete(response,url,data);
   }else if(url.indexOf('.')>0){
     handlers.handlePublic(response,url);
+  }else if(url.indexOf('?submitvalue')>0){
+    handlers.handleHistory(response, url, data)
   }else {
     handlers.handleHome(response);
   }

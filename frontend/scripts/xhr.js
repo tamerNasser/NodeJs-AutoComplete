@@ -1,6 +1,6 @@
 var countries = [];
 
-let connectToBase = function(value) {
+let connectToBase = function(value,cb) {
   // , { "mode" : "no-cors"}
   // console.log(value);
 
@@ -23,15 +23,21 @@ let connectToBase = function(value) {
         response.json().then(function(data) {
           // console.log(data);
           countries = data;
+            cb();
           // console.log(countries);
-        });
+        })
       }
+
     )
     .catch(function(err) {
       console.log('Fetch Error :-S', err);
     });
+
 }
 
+const changeValue = () => {
+  return countries;
+}
 
 if (typeof module !== "undefined") {
   module.exports = connectToBase;
