@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "node tests/test.js | tap-spec",
-    "connect": "nodemon backend/server.js"
+    "connect": "nodemon backend/server.js",
+    "start": "node backend/server.js"
   },
   "repository": {
     "type": "git",
