@@ -3,7 +3,10 @@ var countries = [];
 let connectToBase = function(value) {
   // , { "mode" : "no-cors"}
   // console.log(value);
-  fetch('/search?input=' + value)
+
+  let lastWord = value.split( ' ' );
+
+  fetch('/search?input=' + lastWord[lastWord.length - 1])
     .then(
       function(response) {
         if (response.status !== 200) {
@@ -23,6 +26,8 @@ let connectToBase = function(value) {
       console.log('Fetch Error :-S', err);
     });
 }
+
+
 if (typeof module !== "undefined") {
   module.exports = connectToBase;
 }

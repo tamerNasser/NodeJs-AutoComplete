@@ -58,6 +58,7 @@ let autocomplete = (inp) => {
         addActive(x);
       } else if (e.keyCode == 13) {
 
+search( this.value )
         e.preventDefault();
         if (currentFocus > -1) {
 
@@ -98,9 +99,13 @@ let autocomplete = (inp) => {
   });
 }
 
-function google_search(val)
-{
-window.location = "http://www.google.com/search?q=site:" + val + encodeURIComponent(document.getElementById("q").value);
-}
+function search(query){
+           if(query.slice(0, 7) == "http://"){
+               window.location.href = query
+           }
+           else{
+               window.location.href = "https://www.google.com/search?q=" + query
+           }
+       }
 
 autocomplete(document.getElementById("myInput"));
