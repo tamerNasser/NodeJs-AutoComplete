@@ -34,6 +34,8 @@ const handleHome = (response) => {
 const handleAutoComplete = (res, url, data) => {
   let search = querystring.parse(url.substring(url.indexOf('?') + 1)).input;
   data = JSON.parse(data)
+  console.log(data);
+  console.log(url);
   let results = data
     .reduce((acc, currentObj) => {
       if (acc === undefined || acc.length < 6) {
@@ -45,8 +47,9 @@ const handleAutoComplete = (res, url, data) => {
         return acc;
       }
     }, [])
+    console.log(results);
     res.writeHead(200, {'Content-Type': 'application/json'});
-    res.end(results);
+    res.end(JSON.stringify(results));
   console.log("autocomplete : ", results);
 
 }
