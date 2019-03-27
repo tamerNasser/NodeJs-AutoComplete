@@ -18,7 +18,16 @@ let autocomplete = (inp) => {
 
       this.parentNode.appendChild(a);
 
+     let newVal = val.split(' ');
+
+     if( newVal.trim() == "" )
+          val = newVal[0];
+
+    else val = newVal[ val.length - 1 ]  
+
       for (i = 0; i < countries.length; i++) {
+
+
 
         if (countries[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
 
