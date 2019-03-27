@@ -1,8 +1,6 @@
 
-var countries = ["text", "2323"]
 
-
-let autocomplete = (inp, arr) => {
+let autocomplete = (inp) => {
 
   var currentFocus;
   inp.addEventListener("input", function(e) {
@@ -11,6 +9,7 @@ let autocomplete = (inp, arr) => {
       if (!val) return false;
 
       connectToBase( this.value );
+      console.log(countries);
       currentFocus = -1;
 
       a = document.createElement("DIV");
@@ -19,16 +18,16 @@ let autocomplete = (inp, arr) => {
 
       this.parentNode.appendChild(a);
 
-      for (i = 0; i < arr.length; i++) {
+      for (i = 0; i < countries.length; i++) {
 
-        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+        if (countries[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
 
           b = document.createElement("DIV");
 
-          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-          b.innerHTML += arr[i].substr(val.length);
+          b.innerHTML = "<strong>" + countries[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += countries[i].substr(val.length);
 
-          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          b.innerHTML += "<input type='hidden' value='" + countries[i] + "'>";
 
           b.addEventListener("click", function(e) {
 
@@ -99,4 +98,4 @@ let autocomplete = (inp, arr) => {
   });
 }
 
-autocomplete(document.getElementById("myInput"), countries);
+autocomplete(document.getElementById("myInput"));
