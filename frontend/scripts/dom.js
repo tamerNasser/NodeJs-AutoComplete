@@ -98,4 +98,9 @@ let autocomplete = (inp) => {
   });
 }
 
+function google_search(val)
+{
+window.location = "http://www.google.com/search?q=site:" + val + encodeURIComponent(document.getElementById("q").value);
+}
+
 autocomplete(document.getElementById("myInput"));
