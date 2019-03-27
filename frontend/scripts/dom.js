@@ -8,46 +8,56 @@ let autocomplete = (inp) => {
       closeAllLists();
       if (!val) return false;
 
-      connectToBase( this.value );
-      console.log(countries);
-      currentFocus = -1;
+      connectToBase( this.value ,()=>{
+        countries = changeValue();
+        console.log(countries);
+        currentFocus = -1;
 
-      a = document.createElement("DIV");
-      a.setAttribute("id", this.id + "autocomplete-list");
-      a.setAttribute("class", "autocomplete-items");
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
 
-      this.parentNode.appendChild(a);
+        this.parentNode.appendChild(a);
 
-     let newVal = val.split(' ');
+        let newVal = val.split(' ');
 
-     if( newVal[val.length-1].trim() == "" )
+        if(newVal[newVal.length-1] === undefined){
           val = newVal[0];
-
-    else val = newVal[ val.length - 1 ]
-
-      for (i = 0; i < countries.length; i++) {
-
-
-
-        if (countries[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-
-          b = document.createElement("DIV");
-
-          b.innerHTML = "<strong>" + countries[i].substr(0, val.length) + "</strong>";
-          b.innerHTML += countries[i].substr(val.length);
-
-          b.innerHTML += "<input type='hidden' value='" + countries[i] + "'>";
-
-          b.addEventListener("click", function(e) {
-
-              inp.value = this.getElementsByTagName("input")[0].value;
-
-
-              closeAllLists();
-          });
-          a.appendChild(b);
+        }else {
+          val=newVal[newVal.length-1];
         }
-      }
+
+
+
+
+
+
+        for (i = 0; i < countries.length; i++) {
+
+
+
+          if (countries[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+
+            b = document.createElement("DIV");
+
+            b.innerHTML = "<strong>" + countries[i].substr(0, val.length) + "</strong>";
+            b.innerHTML += countries[i].substr(val.length);
+
+            b.innerHTML += "<input type='hidden' value='" + countries[i] + "'>";
+
+            b.addEventListener("click", function(e) {
+
+                inp.value = this.getElementsByTagName("input")[0].value;
+
+
+                closeAllLists();
+            });
+            a.appendChild(b);
+          }
+        }
+
+      });
+
   });
 
   inp.addEventListener("keydown", function(e) {
