@@ -1,5 +1,5 @@
 
-var countries = [{"text": "akhan"}, {"text": "afgan"}, {"text" : "israel"}]
+var countries = ["text", "2323"]
 
 
 let autocomplete = (inp, arr) => {
@@ -21,14 +21,14 @@ let autocomplete = (inp, arr) => {
 
       for (i = 0; i < arr.length; i++) {
 
-        if (arr[i].text.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
 
           b = document.createElement("DIV");
 
-          b.innerHTML = "<strong>" + arr[i].text.substr(0, val.length) + "</strong>";
-          b.innerHTML += arr[i].text.substr(val.length);
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
 
-          b.innerHTML += "<input type='hidden' value='" + arr[i].text + "'>";
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
 
           b.addEventListener("click", function(e) {
 
