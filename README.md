@@ -1,4 +1,4 @@
-# NodeJs AutoComplete Search
+# NodeJs AutoComplete Search :bulb:
 
 ## [NodeJs AutoComplete Search Website](https://tamkarnodejs.herokuapp.com)
 
@@ -12,13 +12,13 @@ We converted the string to array, then looped on the array and sorted the words 
 So we made an object, that has 26 keys A-Z, each key(letter) got an object as value, and all the words that starts with 'key' character will be in the value. 
 
 ### Main Goals
-- [ ] We expect back-end testing using tape (test as many components as you can) and basic front-end testing.
-- [x] Host your project on heroku.
+- [ ] We expect back-end testing using tape (test as many components as you can) and basic front-end testing. :white_check_mark:
+- [x] Host your project on heroku. :rocket:
 - [x] Use module.exports and require to break a single large server file into smaller modules.
 - [x] A good server file structure.
 
 ### Our Goals
-- [x] A good project file structure.
+- [x] A good project file structure. 
 - [x] Adding localstorage to save the user history.
 - [x] Using fetch instead of xhr.
 - [x] History Search through using localStorage Web API.
@@ -30,8 +30,9 @@ So we made an object, that has 26 keys A-Z, each key(letter) got an object as va
 - [ ] Auto complete senteces.
 - [ ] Error handling.
 - [x] ES6 only.
+- [x] Works on mobile. :iphone:
 
-### Software architecture
+### Software architecture :construction: :building_construction:
 ![a]()
 ![]()
 ![]()
@@ -39,6 +40,12 @@ So we made an object, that has 26 keys A-Z, each key(letter) got an object as va
 ### Coverage testing
 ![](https://github.com/facn5/NodeJs-AutoComplete/blob/master/repoAssets/coverageBackend.png)
 ![]()
+
+### Things to share
+- Making your own algorithim to build a JSON file for your words will make your life easier. :card_file_box:
+How we parse text file to JSON object which is alphabet structured: [Click me](https://github.com/facn5/NodeJs-AutoComplete/blob/master/wordssetup.js)
+
+
 
 ### Tools/technologies used
 * LocalStorage Web API - To save history.
