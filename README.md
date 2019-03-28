@@ -33,13 +33,11 @@ So we made an object, that has 26 keys A-Z, each key(letter) got an object as va
 - [x] Works on mobile. :iphone:
 
 ### Software architecture :construction: :building_construction:
-![a]()
-![]()
-![]()
+![](https://github.com/facn5/NodeJs-AutoComplete/blob/master/repoAssets/arch.jpeg)
+
 
 ### Coverage testing
 ![](https://github.com/facn5/NodeJs-AutoComplete/blob/master/repoAssets/coverageBackend.png)
-![]()
 
 ### Things to share
 - Making your own algorithim to build a JSON file for your words will make your life easier. :card_file_box:
