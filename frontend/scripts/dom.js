@@ -11,10 +11,8 @@ const autocomplete = inp => {
 
     if (!inputVal) return false;
 
-    connectToBase(this.value, () => {
-      words = getAutoCompleteWords(); // Getting the related words
+    connectToBase(this.value, (words) => {
       currentFocus = -1;
-
       itemsDiv = document.createElement("DIV");
       itemsDiv.setAttribute("id", this.id + "autocomplete-list");
       itemsDiv.setAttribute("class", "autocomplete-items");
