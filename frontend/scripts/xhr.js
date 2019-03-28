@@ -1,7 +1,6 @@
 let words = [];
 
 let connectToBase = function(value, cb) {
-  value=value.toLowerCase();
   let lastWord = value.split(' ');
   let lastWordF = "";
 
@@ -21,7 +20,7 @@ let connectToBase = function(value, cb) {
 
         response.json().then((data) => {
           words = data;
-          cb();
+          cb(words);
         })
       }
     )
@@ -31,9 +30,6 @@ let connectToBase = function(value, cb) {
 
 }
 
-const getAutoCompleteWords = () => {
-  return words;
-}
 
 if (typeof module !== "undefined") {
   module.exports = connectToBase;
