@@ -22,7 +22,7 @@ let exType = {
 };
 
 const handleHome = (response) => {
-  let filePath = path.join(__dirname, "..", "frontend", "layouts", "index.html");
+  let filePath = path.join(__dirname, "..", "public", "layouts", "index.html");
   fs.readFile(filePath, (error, file) => {
     if (error) {
       response.writeHead(500);
@@ -45,7 +45,7 @@ const handleAutoComplete = (res, url, data) => {
 
 const handlePublic = (response, url) => {
   let extension = url.split(".")[1];
-  let filePath = path.join(__dirname, "..", "frontend", url);
+  let filePath = path.join(__dirname, "..", "public", url);
   fs.readFile(filePath, (error, file) => {
     if (error) {
       response.writeHead(500);

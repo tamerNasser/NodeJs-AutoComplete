@@ -138,9 +138,15 @@ const autocomplete = inp => {
 
 function googleSearch(query) {
   if (query.slice(0, 7) == "http://") {
-    window.location.href = query;
+    window.open(
+  query,
+  '_blank' // <- This is what makes it open in a new window.
+);
   } else {
-    window.location.href = "https://www.google.com/search?q=" + query;
+    window.open(
+  'https://www.google.com/search?q='+ query,
+  '_blank' // <- This is what makes it open in a new window.
+);
   }
 }
 
