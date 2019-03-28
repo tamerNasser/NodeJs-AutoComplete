@@ -1,12 +1,14 @@
 html,
 body {
   margin: 0;
+
 }
 
 .page-title {
   margin-top: 20px;
   margin-bottom: 15px;
   padding: 20px;
+
   width: fit-content;
   margin-right: auto;
   margin-left: auto;
@@ -14,18 +16,18 @@ body {
 
 input[type="text"] {
   width: 60%;
-margin: auto;
-
+  margin: auto;
+  border: 1px black solid;
   background-position: 10px 10px;
   background-repeat: no-repeat;
   padding: 12px 5px 12px 5px;
   -webkit-transition: width 0.7s ease-in-out;
   transition: width 0.7s ease-in-out;
-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 input[type="text"]:focus, input[type="text"]:valid {
-width: 100%;
+width: 90%;
 }
 
 * { box-sizing: border-box; }
@@ -45,6 +47,11 @@ input {
 }
 input[type=text] {
   background-color: #f1f1f1;
+}
+
+label {
+  bottom: 15px;
+  position: relative;
 }
 
 .autocomplete-items {
