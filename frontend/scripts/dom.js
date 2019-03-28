@@ -3,6 +3,7 @@ const autocomplete = inp => {
   inp.addEventListener("input", function(e) {
     let itemsDiv;
     let wordItemDiv;
+    let parent = document.getElementById('myInputautocomplete-list');
     let i;
     let inputVal = this.value; //input value
 
@@ -40,7 +41,12 @@ const autocomplete = inp => {
           if (existing != null) {
             for (let x = 0; x < existing.length; x++) {
               if (words[i] === existing[x])
+              {
                 wordItemDiv.style.color = "blue"
+                wordItemDiv.id = "first"
+              }
+              // wordItemDiv.insertBefore(parent, parent.firstChild);
+
             }
           }
 
@@ -49,7 +55,12 @@ const autocomplete = inp => {
             closeAllLists();
           });
 
-          itemsDiv.appendChild(wordItemDiv);
+          if( wordItemDiv.id !== "first")
+        itemsDiv.appendChild(wordItemDiv);
+
+        else
+        itemsDiv.prepend(wordItemDiv);
+
         }
       }
     });
