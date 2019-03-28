@@ -51,7 +51,7 @@ const handlePublic = (response, url) => {
       response.writeHead(500);
       response.end("error500");
     } else {
-      response.writeHead(200, exType.extension);
+      response.writeHead(200, exType[extension]);
       response.end(file);
     }
   });
