@@ -37,6 +37,7 @@ const autocomplete = inp => {
           wordItemDiv.innerHTML = "<strong>" + words[i].substr(0, inputVal.length) + "</strong>";
           wordItemDiv.innerHTML += words[i].substr(inputVal.length);
           wordItemDiv.innerHTML += "<input type='hidden' value='" + words[i] + "'>";
+          wordItemDiv.id = "second";
 
           if (existing != null) {
             for (let x = 0; x < existing.length; x++) {
@@ -45,10 +46,12 @@ const autocomplete = inp => {
                 wordItemDiv.style.color = "blue"
                 wordItemDiv.id = "first"
               }
+
               // wordItemDiv.insertBefore(parent, parent.firstChild);
 
             }
           }
+
 
           wordItemDiv.addEventListener("click", function(e) {
             inp.value = this.getElementsByTagName("input")[0].value;
@@ -124,6 +127,14 @@ const autocomplete = inp => {
 
   document.addEventListener("click", function(e) {
     closeAllLists(e.target);
+    if( e.srcElement.id == "first" || e.srcElement.id == "second" )
+    {
+      var existing = localStorage.getItem("History");
+      existing = existing ? existing.split(",") : [];
+      existing.push(e.srcElement.innerText);
+      localStorage.setItem("History", existing.toString());
+      googleSearch(e.srcElement.innerText)
+  }
   });
 };
 
