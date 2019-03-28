@@ -15,6 +15,9 @@ let exType = {
   },
   js: {
     "Content-Type": "application/javascript"
+  },
+  json:{
+    'Content-Type': 'application/json'
   }
 };
 
@@ -36,9 +39,7 @@ const handleAutoComplete = (res, url, data) => {
   data = JSON.parse(data)
   let searchobj = search[0].toUpperCase();
   let results = logic.getAutoCompleteWords(Object.keys(data[searchobj]),search);
-  res.writeHead(200, {
-    'Content-Type': 'application/json'
-  });
+  res.writeHead(200, exType.josn);
   res.end(JSON.stringify(results));
 }
 
