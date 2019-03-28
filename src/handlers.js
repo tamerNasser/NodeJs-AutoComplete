@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const querystring = require('querystring');
-const logic = require('./logic')
+const getWords = require('./getWords')
 
 let exType = {
   html: {
@@ -38,7 +38,7 @@ const handleAutoComplete = (res, url, data) => {
   let search = querystring.parse(url.substring(url.indexOf('?') + 1)).input;
   data = JSON.parse(data);
   let searchobj = search[0].toUpperCase();
-  let results = logic.getAutoCompleteWords(Object.keys(data[searchobj]),search);
+  let results = getWords.getAutoCompleteWords(Object.keys(data[searchobj]),search);
   res.writeHead(200, exType.josn);
   res.end(JSON.stringify(results));
 }
