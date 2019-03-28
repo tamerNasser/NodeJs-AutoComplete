@@ -133,7 +133,7 @@ const autocomplete = inp => {
       existing = existing ? existing.split(",") : [];
       existing.push(e.srcElement.innerText);
       localStorage.setItem("History", existing.toString());
-      googleSearch(e.srcElement.innerText)
+      googleSearch(e.srcElement.innerText);
   }
   });
 };
