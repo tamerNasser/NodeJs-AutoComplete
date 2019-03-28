@@ -1,6 +1,7 @@
 let words = [];
 
 let connectToBase = function(value, cb) {
+  value=value.toLowerCase();
   let lastWord = value.split(' ');
   let lastWordF = "";
 
