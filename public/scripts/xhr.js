@@ -1,8 +1,13 @@
 let words = [];
 
 let connectToBase = function(value, cb) {
+  var reg = /^[a-z]+$/i;
+
+  if( !reg.test(value) )
+  return;
+
   let lastWord = value.split(' ');
-  let lastWordF = "";
+  let lastWordF = ""
 
   if (lastWord[lastWord.length - 1].trim() === "")
     lastWordF = lastWord[0];
