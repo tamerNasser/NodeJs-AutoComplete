@@ -7,7 +7,7 @@ let connectToBase = function(value, cb) {
   return;
 
   let lastWord = value.split(' ');
-  let lastWordF = "";
+  let lastWordF = ""
 
   if (lastWord[lastWord.length - 1].trim() === "")
     lastWordF = lastWord[0];
